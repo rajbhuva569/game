@@ -15,7 +15,18 @@ A hybrid mobile game architecture combining **Phaser.js** for gameplay and **Flu
 
 You can run the game in your browser to test gameplay mechanics.
 
-1.  Navigate to the project root.
+#### Quick Start (Recommended)
+Run the helper script from the project root:
+```bash
+./run_web_game.sh
+```
+Then open: [http://localhost:8000/web-game/index.html](http://localhost:8000/web-game/index.html)
+
+#### Manual Start
+1.  Navigate to the project root:
+    ```bash
+    cd /path/to/project
+    ```
 2.  Start a local HTTP server (Python):
     ```bash
     python3 -m http.server 8000
@@ -32,14 +43,15 @@ To run the game on an Android emulator or device:
 #### Step A: Prepare Assets
 The mobile app loads the game from its local assets. You must copy the web game files into the Flutter project.
 
-1.  Create the assets directory if it doesn't exist:
-    ```bash
-    mkdir -p mobile-app/assets/www
-    ```
-2.  Copy the web game files:
-    ```bash
-    cp -r web-game/* mobile-app/assets/www/
-    ```
+Run the helper script:
+```bash
+./setup_mobile_assets.sh
+```
+Or manually:
+```bash
+mkdir -p mobile-app/assets/www
+cp -r web-game/* mobile-app/assets/www/
+```
 
 #### Step B: Configure Flutter
 1.  Navigate to `mobile-app/`:
@@ -77,7 +89,7 @@ The mobile app loads the game from its local assets. You must copy the web game 
 ## Development Workflow
 
 1.  Edit game code in `web-game/`.
-2.  Test in browser (`localhost:8000`).
+2.  Test in browser (`./run_web_game.sh`).
 3.  When ready to test on device:
-    -   Run the copy command (Step A).
+    -   Run `./setup_mobile_assets.sh`.
     -   Run `flutter run` (or Hot Restart if already running).
